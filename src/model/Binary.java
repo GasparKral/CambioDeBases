@@ -1,0 +1,55 @@
+package model;
+
+public class Binary {
+
+    private Integer number;
+
+    public Binary(Number number) {
+        Integer tempnumber = Integer.parseInt(number.toString());
+        try {
+            if (String.valueOf(tempnumber).contains(".")) {
+                throw new Exception();
+            }
+            for (char c : String.valueOf(tempnumber).toCharArray()) {
+                if (c != '0' && c != '1') {
+                    throw new Exception();
+                }
+            }
+            this.number = (int) tempnumber;
+        } catch (Exception e) {
+            System.out.println("Invalid binary number");
+        }
+    }
+
+    public static Binary parseOctal(Octal number) {
+
+        try {
+            return new Binary(Integer.parseInt(Integer.toBinaryString(Integer.parseInt(number.toString()))));
+        } catch (Exception e) {
+            System.out.println("Invalid octal number");
+        }
+        return null;
+
+    }
+
+    public static Binary parseDecimal(Number number) {
+        Integer tempnumber = Integer.parseInt(number.toString());
+        try {
+            if (String.valueOf(tempnumber).contains(".")) {
+                throw new Exception();
+            }
+
+            return new Binary(Integer.parseInt(Integer.toBinaryString(tempnumber)));
+
+        } catch (Exception e) {
+            System.out.println("Invalid decimal number");
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
+
+}
