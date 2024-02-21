@@ -22,7 +22,6 @@ public class Binary {
     }
 
     public static Binary parseOctal(Octal number) {
-
         try {
             return new Binary(Integer.parseInt(Integer.toBinaryString(Integer.parseInt(number.toString()))));
         } catch (Exception e) {
@@ -33,8 +32,8 @@ public class Binary {
     }
 
     public static Binary parseDecimal(Number number) {
-        Integer tempnumber = Integer.parseInt(number.toString());
         try {
+            Integer tempnumber = Integer.parseInt(number.toString());
             if (String.valueOf(tempnumber).contains(".")) {
                 throw new Exception();
             }
@@ -43,6 +42,16 @@ public class Binary {
 
         } catch (Exception e) {
             System.out.println("Invalid decimal number");
+        }
+        return null;
+    }
+
+    public static Binary parseHexadecimal(String number) {
+        try {
+            Integer tempnumber = Integer.parseInt(number, 16);
+            return new Binary(Integer.parseInt(Integer.toBinaryString(tempnumber)));
+        } catch (Exception e) {
+            System.out.println("Invalid hexadecimal number");
         }
         return null;
     }

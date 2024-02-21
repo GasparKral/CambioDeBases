@@ -41,6 +41,16 @@ public class Octal {
         return null;
     }
 
+    public static Octal parseHexadecimal(String number) {
+        try {
+            Integer tempnumber = Integer.parseInt(number, 16);
+            return Octal.parseDecimal(tempnumber);
+        } catch (Exception e) {
+            System.out.println("Invalid hexadecimal number");
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return String.valueOf(number);
