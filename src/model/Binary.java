@@ -61,4 +61,20 @@ public class Binary {
         return String.valueOf(number);
     }
 
+    public static Integer toDecimal(Number number) {
+        try {
+            char tempstring[] = number.toString().toCharArray();
+            int tempvalue = 0;
+            for (int i = 0; i < tempstring.length; i++) {
+                tempvalue += Math.pow(2, tempstring.length - i - 1) * (tempstring[i] - '0');
+            }
+            return tempvalue;
+        } catch (Exception e) {
+            System.out.println("Invalid binary number");
+
+        }
+        return null;
+
+    }
+
 }
